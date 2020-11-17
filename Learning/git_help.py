@@ -8,6 +8,6 @@ git push -u origin master                                          // publish ch
 
 
 git commit -am "message":  is same to git add -A followed by git commit -m "message
-
-
+git push -u remote master
+git pull remote master
 """
