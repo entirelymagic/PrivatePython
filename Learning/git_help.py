@@ -6,4 +6,8 @@ git remote add origin https://github.com/username/repo-name.git    // add remote
 git pull origin master                                             // always pull from remote before pushing
 git push -u origin master                                          // publish changes to your remote repository
 
+
+git commit -am "message":  is same to git add -A followed by git commit -m "message
+
+
 """
