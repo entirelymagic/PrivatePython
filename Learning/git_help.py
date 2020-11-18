@@ -29,8 +29,8 @@ git push -u remote master
 git pull remote master
 """
 
-import os
-""" cmd /c and terminate or cmd /k and remain"""
+""" cmd /c and terminate or cmd /k and remain
+
 import os
 import tkinter as tk
 
@@ -55,4 +55,28 @@ canvas1.create_window(150, 150, window=button1)
 root.mainloop()
 
 
+"""
 
+import os
+import tkinter as tk
+
+root = tk.Tk()
+
+canvas1 = tk.Canvas(root, width=300, height=300, bg='gray90', relief='raised')
+canvas1.pack()
+
+
+def myCmd():
+    os.system('cmd /c "git status"')
+    os.system('cmd /c "git add -A"')
+    os.system('cmd /c "git commit -m \'Update From git_help\'"')
+    os.system('cmd /c "git pull origin master"')
+    os.system('cmd /c "git push -u origin master"')
+
+
+button1 = tk.Button(text='      Run Command      ', command=myCmd, bg='green', fg='white',
+                    font=('helvetica', 12, 'bold'))
+
+canvas1.create_window(150, 150, window=button1)
+
+root.mainloop()
