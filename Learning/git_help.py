@@ -1,5 +1,5 @@
 """
-First step:
+First steps:
     - set identity:
     git config --global user.name "John Doe"
     git config --global user.email johndoe@example.com
@@ -12,8 +12,6 @@ First step:
 
     -check configuration settings:
     git config --list
-e
-
 
 
 git init                                                           // start tracking current directory
@@ -30,3 +28,31 @@ git commit -am "message":  is same to git add -A followed by git commit -m "mess
 git push -u remote master
 git pull remote master
 """
+
+import os
+""" cmd /c and terminate or cmd /k and remain"""
+import os
+import tkinter as tk
+
+root = tk.Tk()
+
+canvas1 = tk.Canvas(root, width=300, height=300, bg='gray90', relief='raised')
+canvas1.pack()
+
+
+def myCmd():
+    os.system('cmd /c "git status"')
+    os.system('cmd /c "git add -A"')
+    os.system('cmd /c "git commit -m \'message\'"')
+    os.system('cmd /c "git pull origin master"')
+    os.system('cmd /c "git push -u origin master"')
+
+
+button1 = tk.Button(text='      Run Command      ', command=myCmd, bg='green', fg='white',
+    font=('helvetica', 12, 'bold'))
+canvas1.create_window(150, 150, window=button1)
+
+root.mainloop()
+
+
+
