@@ -67,9 +67,8 @@ canvas1.pack()
 
 
 def myCmd():
-    os.system('cmd /c "git status"')
-    os.system('cmd /c "git add -A"')
-    os.system('cmd /c "git commit -m \'Update From git_help\'"')
+    os.system('cmd /c "cd C:\PROGRAMS\Exercises\PrivatePython"')
+    os.system('cmd /c "git commit -am \"Update From git_help\""')
     os.system('cmd /c "git pull origin master"')
     os.system('cmd /c "git push -u origin master"')
 
@@ -79,4 +78,5 @@ button1 = tk.Button(text='      Run Command      ', command=myCmd, bg='green', f
 
 canvas1.create_window(150, 150, window=button1)
 
-root.mainloop()
+if __name__ == '__main__':
+    root.mainloop()
