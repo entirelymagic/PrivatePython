@@ -12,8 +12,6 @@ First step:
 
     -check configuration settings:
     git config --list
-e
-
 
 
 git init                                                           // start tracking current directory
