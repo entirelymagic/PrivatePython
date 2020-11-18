@@ -69,7 +69,7 @@ canvas1.pack()
 def myCmd():
     os.system('cmd /c "cd C:\PROGRAMS\Exercises\PrivatePython"')
     os.system('cmd /c "git add -A"')
-    os.system('cmd /c "git commit m \"Update From git_help\""')
+    os.system('cmd /c "git commit -m \"Update From git_help\""')
     os.system('cmd /c "git pull origin master"')
     os.system('cmd /c "git push -u origin master"')
 
