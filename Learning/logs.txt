@@ -1,0 +1,4 @@
+18-11-2020:13:22:04 INFO     [about_logging.py:81] This won't show up.
+18-11-2020:13:22:04 WARNING  [about_logging.py:82] This will.
+18-11-2020:13:22:18 INFO     [about_logging.py:81] This won't show up.
+18-11-2020:13:22:18 WARNING  [about_logging.py:82] This will.
