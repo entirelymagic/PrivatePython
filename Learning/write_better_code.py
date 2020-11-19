@@ -1,5 +1,5 @@
-# def greet(greeting, target):
-#     return f"{greeting}! {target}"
+def greet(greeting, target):
+    return f"{greeting}! {target}"
 
 import functools
 
