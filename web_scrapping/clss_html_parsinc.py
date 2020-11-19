@@ -33,51 +33,44 @@ ITEM_HTML = '''<html><head></head><body>
 '''
 
 
-soup = BeautifulSoup(ITEM_HTML, 'html.parser')
+class ParsedItem:
+    """
+    A class to take in an HTML page or content, and find properties of an item
+    in it.
+    """
+    def __init__(self, page):
+        self.soup = BeautifulSoup(page, 'html.parser')
+
+    @property
+    def name(self):
+        locator = 'article.product_pod h3 a'
+        item_name = self.soup.select_one(locator).attrs['title']
+        return item_name
+
+    @property
+    def link(self):
+        locator = 'article.product_pod h3 a'
+        item_url = self.soup.select_one(locator).attrs['href']
+        return item_url
+
+    @property
+    def price(self):
+        locator = 'article.product_pod p.price_color'
+        item_price = self.soup.select_one(locator).string
+
+        pattern = '£([0-9]+\.[0-9]+)'
+        matcher = re.search(pattern, item_price)
+        return float(matcher.group(1))
+
+    @property
+    def rating(self):
+        locator = 'article.product_pod p.star-rating'
+        star_rating_element = self.soup.select_one(locator)
+        classes = star_rating_element.attrs['class']
+        rating_classes = filter(lambda x: x != 'star-rating', classes)
+        return next(rating_classes)
 
 
-def find_item_name():
-    locator = 'article.product_pod h3 a'
-    item_name = soup.select_one(locator).attrs['title']
-    return item_name
-
-
-def find_item_page_link():
-    locator = 'article.product_pod h3 a'
-    item_url = soup.select_one(locator).attrs['href']
-    return item_url
-
-
-def find_item_price():
-    locator = 'article.product_pod p.price_color'
-    item_price = soup.select_one(locator).string
-
-    pattern = '£([0-9]+\.[0-9]+)'
-    matcher = re.search(pattern, item_price)
-    return float(matcher.group(1))
-
-
-def find_item_rating():
-    locator = 'article.product_pod p.star-rating'
-    star_rating_element = soup.select_one(locator)
-    classes = star_rating_element.attrs['class']
-    rating_classes = filter(lambda x: x != 'star-rating', classes)
-    return next(rating_classes)
-
-
-print(find_item_name())
-print(find_item_page_link())
-print(find_item_price())
-print(find_item_rating())
-
-# You can then turn it into a dictionary or whichever
-# way is easiest to store and work with:
-
-item = {
-    'name': find_item_name(),
-    'link': find_item_page_link(),
-    'price': find_item_price(),
-    'rating': find_item_rating()
-}
-
-print(item)
+item = ParsedItem(ITEM_HTML)
+print(item.name)
+print(item.price)
